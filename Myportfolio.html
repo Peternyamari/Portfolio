@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bob 10 Mziki - Personal Website</title>
+  <style>
+    /* Basic Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Georgia, serif;
+      color: #333;
+      background-color: #f8f9fa;
+      line-height: 1.6;
+    }
+
+    /* Navigation Bar */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #333;
+      color: #fff;
+      font-size: 16px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-weight: bold;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      color: #fff;
+      transition: color 0.3s, transform 0.3s;
+    }
+
+    .nav-links li a:hover {
+      color: #ffeb3b;
+      transform: translateY(-2px);
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #fff;
+      color: #333;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+      list-style: none;
+      padding: 0;
+      z-index: 1;
+    }
+
+    .dropdown-content li a {
+      color: #333;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      display: block;
+      font-size: 14px;
+    }
+
+    .dropdown-content li a:hover {
+      background-color: #f1f1f1;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    /* Hero Section */
+    .hero {
+      background-image: url('images/1.jpg'); /* Replace with your background image */
+      background-size: cover;
+      background-position: center;
+      color: white;
+      text-align: center;
+      padding: 4rem 2rem;
+      font-size: 1.2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero .button {
+      background-color: #ffeb3b;
+      color: #333;
+      padding: 0.8rem 1.5rem;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: transform 0.3s;
+    }
+
+    .hero .button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    /* About Section */
+    #about {
+      padding: 3rem 2rem;
+      text-align: center;
+      background-color: #fff;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      margin: 2rem auto;
+      max-width: 900px;
+    }
+
+    #about h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .about-content {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .about-content img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .about-content p {
+      font-size: 1rem;
+      max-width: 500px;
+      text-align: left;
+      transition: transform 0.3s;
+    }
+
+    .about-content p:hover {
+      transform: translateY(-2px);
+    }
+
+    /* Portfolio Section */
+    #portfolio {
+      padding: 3rem 2rem;
+      text-align: center;
+      background-color: #f0f0f5;
+    }
+
+    #portfolio h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .portfolio-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      padding-top: 1.5rem;
+    }
+
+    .portfolio-gallery img {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .portfolio-gallery img:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Contact Section */
+    #contact {
+      padding: 3rem 2rem;
+      text-align: center;
+      background-color: #fff;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      margin: 2rem auto;
+      max-width: 900px;
+    }
+
+    #contact h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    #contact p {
+      margin-bottom: 1rem;
+    }
+
+    .button {
+      background-color: #4a90e2;
+      color: white;
+      padding: 0.6rem 1.5rem;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      font-weight: bold;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Footer */
+    footer {
+      background-color: #333;
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+      font-size: 0.85rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .about-content {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav>
+    <div class="logo">Bob 10 Mziki</div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li class="dropdown">
+        <a href="#social">Links</a>
+        <ul class="dropdown-content">
+          <li><a href="https://www.youtube.com/channel/UCCn5DpNTYebQsWug3H0s2VQ/videos" target="_blank">YouTube</a></li>
+          <li><a href="https://mdundo.com/song/2733938" target="_blank">Mdundo</a></li>
+          <li><a href="https://instagram.com/YOUR_INSTAGRAM_HANDLE" target="_blank">Instagram</a></li>
+          <li><a href="https://www.reverbnation.com/your_reverbnation_profile" target="_blank">ReverbNation</a></li>
+          <li><a href="https://www.boomplay.com/artists/your_boomplay_profile" target="_blank">Boomplay</a></li>
+          <li><a href="https://www.tiktok.com/@your_tiktok_handle" target="_blank">TikTok</a></li>
+          <li><a href="https://www.linkedin.com/in/your_linkedin_profile" target="_blank">LinkedIn</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <div class="hero" id="home">
+    <h1>Welcome to Bob 10 Mziki's World</h1>
+    <p>Explore my music, art, and everything in between!</p>
+    <a href="#portfolio" class="button">See My Work</a>
+  </div>
+
+  <!-- About Section -->
+  <section id="about">
+    <h2>About Me</h2>
+    <div class="about-content">
+      <img src="images/2.jpg" alt="Bob 10 Mziki">
+      <p>I'm a passionate musician and artist. My journey in the music industry is fueled by creativity and a love for performance. Join me as I share my passion through my art!</p>
+    </div>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section id="portfolio">
+    <h2>My Music Portfolio</h2>
+    <div class="portfolio-gallery">
+      <img src="images/2.jpg" alt="Music 2">
+      <img src="images/3.jpg" alt="Music 3">
+      <iframe width="300" height="198" src="https://www.youtube.com/embed/QCmnK6JpUwM?si=4xlmdc01Nyv_uc4T" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Get in Touch</h2>
+    <p>I'd love to hear from you! Feel free to reach out through my social media links.</p>
+    <a href="mailto:peternyamari70@gmail.com" class="button">Send Email</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 Bob 10 Mziki. All rights reserved.</p>
+  </footer>
+</body>
+</html>
